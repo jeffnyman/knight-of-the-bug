@@ -3,5 +3,6 @@ export default {
   output: {
     file: "./app/dist/app.js",
     format: "es",
+    sourcemap: "inline",
   },
 };
