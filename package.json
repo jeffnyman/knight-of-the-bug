@@ -11,9 +11,11 @@
     "game"
   ],
   "scripts": {
-    "copy:html": "copyfiles -u 1 ./src/index.html app"
+    "copy:html": "copyfiles -u 1 ./src/index.html app",
+    "delete": "rimraf app"
   },
   "devDependencies": {
-    "copyfiles": "^2.4.1"
+    "copyfiles": "^2.4.1",
+    "rimraf": "^5.0.1"
   }
 }
