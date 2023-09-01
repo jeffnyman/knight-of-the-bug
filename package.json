@@ -9,5 +9,11 @@
     "exploration",
     "rouge-like",
     "game"
-  ]
+  ],
+  "scripts": {
+    "copy:html": "copyfiles -u 1 ./src/index.html app"
+  },
+  "devDependencies": {
+    "copyfiles": "^2.4.1"
+  }
 }
