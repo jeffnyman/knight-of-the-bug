@@ -1,0 +1,13 @@
+{
+  "name": "@jeffnyman/knight-of-the-bug",
+  "version": "0.1.0",
+  "description": "A Pedagogical Exploration into Bug Hunting",
+  "author": "Jeff Nyman",
+  "license": "MIT",
+  "keywords": [
+    "testing",
+    "exploration",
+    "rouge-like",
+    "game"
+  ]
+}
