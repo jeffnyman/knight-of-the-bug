@@ -11,7 +11,7 @@
     "game"
   ],
   "scripts": {
-    "rollup": "rollup --input ./src/scripts/app.js --file ./app/dist/app.js --format es",
+    "rollup": "rollup --config --bundleConfigAsCjs",
     "copy:html": "copyfiles -u 1 ./src/index.html ./src/favicon.ico app",
     "delete": "rimraf app"
   },
