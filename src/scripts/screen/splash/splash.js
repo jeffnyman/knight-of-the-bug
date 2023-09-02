@@ -6,4 +6,6 @@ export function load(element) {
 
   element.appendChild(title.getContents());
   element.appendChild(ground.getContents());
+
+  ground.construct();
 }
