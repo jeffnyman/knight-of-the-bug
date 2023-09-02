@@ -9,5 +9,22 @@ export default {
     sourcemap: "inline",
   },
 
-  plugins: [babel({ babelHelpers: "bundled" })],
+  plugins: [
+    babel({
+      exclude: "node_modules/**",
+      babelHelpers: "bundled",
+      presets: [
+        [
+          "@babel/preset-env",
+          {
+            modules: false,
+            useBuiltIns: false,
+            targets: {
+              browsers: "last 2 versions",
+            },
+          },
+        ],
+      ],
+    }),
+  ],
 };
