@@ -50,6 +50,7 @@ export default {
       plugins: [autoprefixer()],
       inject: false,
       extract: true,
+      sourceMap: devMode ? "inline" : false,
     }),
   ],
 };
