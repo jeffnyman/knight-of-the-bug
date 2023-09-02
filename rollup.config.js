@@ -1,6 +1,8 @@
 import babel from "@rollup/plugin-babel";
 import eslint from "@rollup/plugin-eslint";
 import terser from "@rollup/plugin-terser";
+import postcss from "rollup-plugin-postcss";
+import autoprefixer from "autoprefixer";
 
 const devMode = process.env.NODE_ENV === "development";
 const sourcemap = devMode ? "inline" : false;
@@ -44,5 +46,10 @@ export default {
           drop_debugger: true,
         },
       }),
+    postcss({
+      plugins: [autoprefixer()],
+      inject: false,
+      extract: true,
+    }),
   ],
 };
