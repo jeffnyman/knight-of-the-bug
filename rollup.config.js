@@ -18,6 +18,11 @@ export default {
     sourcemap,
   },
 
+  watch: {
+    include: "./src/**",
+    clearScreen: false,
+  },
+
   plugins: [
     eslint({
       fix: true,
