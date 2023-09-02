@@ -1,10 +1,11 @@
 import babel from "@rollup/plugin-babel";
 import eslint from "@rollup/plugin-eslint";
+import terser from "@rollup/plugin-terser";
 
-const mode = process.env.NODE_ENV === "development";
-const sourcemap = mode ? "inline" : false;
+const devMode = process.env.NODE_ENV === "development";
+const sourcemap = devMode ? "inline" : false;
 
-console.log(`running in ${mode ? "development" : "production"} mode`);
+console.log(`running in ${devMode ? "development" : "production"} mode`);
 
 export default {
   input: "./src/scripts/app.js",
@@ -36,5 +37,12 @@ export default {
         ],
       ],
     }),
+    !devMode &&
+      terser({
+        compress: {
+          drop_console: true,
+          drop_debugger: true,
+        },
+      }),
   ],
 };
