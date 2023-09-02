@@ -11,13 +11,14 @@
     "game"
   ],
   "scripts": {
-    "server:dev": "reload -b -d ./app -p 8080 | rollup --environment NODE_ENV:development -c -w",
-    "server": "reload -b -d ./app -p 8080 | rollup -c -w",
+    "server:dev": "reload -b -d ./app -w ./app -p 8080 | rollup --environment NODE_ENV:development -c -w",
+    "server": "reload -b -d ./app -w ./app -p 8080 | rollup -c -w",
     "lint:js": "eslint -c .eslintrc.js ./src/scripts",
     "rollup": "rollup --config",
     "rollup:dev": "rollup --config --environment NODE_ENV:development",
     "copy:html": "copyfiles -u 1 ./src/index.html ./src/favicon.ico app",
-    "delete": "rimraf app"
+    "delete": "rimraf app",
+    "start": "npm run copy:html && npm run server:dev"
   },
   "devDependencies": {
     "@babel/core": "^7.22.11",
