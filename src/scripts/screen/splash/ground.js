@@ -4,6 +4,24 @@ element.classList.add("ground");
 element.innerHTML = "GROUND";
 
 const GROUND = "xxxxxxxxxx";
+const SPACING = "  ";
+
+const KNIGHT = [
+  "   .-.   ",
+  " __|=|__ ",
+  "(_/'-'\\_)",
+  "//\\___/\\\\",
+  "<>/   \\<>",
+  " \\|_._|/ ",
+  "  <_I_>  ",
+  "   |||   ",
+  "  /_|_\\  ",
+];
+
+function applyKnightColors(character) {
+  let color = "#aae";
+  return `<span style="color:${color}">${character}</span>`;
+}
 
 export function construct() {
   let finalView = [];
@@ -18,6 +36,26 @@ export function construct() {
   let pixels = element.parentNode.offsetWidth;
   let columns = Math.floor((GROUND.length * pixels) / element.offsetWidth) - 2;
   let grass = `<span class='grass'>${new Array(columns + 1).join("^")}</span>`;
+
+  // The following code takes the original ASCII art representation of the
+  // knight and adds `<span>` elements to color each character as specified
+  // by the applyKnightColors function. The resulting knight array contains
+  // the modified ASCII art that can be rendered, displaying the knight with
+  // the specified color.
+  let knight = KNIGHT.join("\n").replace(/\S/g, applyKnightColors).split("\n");
+
+  for (let i = 0; i < knight.length; i++) {
+    let object_columns = columns;
+
+    object_columns -= SPACING.length;
+    object_columns -= knight.length;
+
+    let row = `${SPACING}${knight[i]}${new Array(object_columns + 1).join(
+      " ",
+    )}${knight[i]}`;
+
+    finalView.push(row);
+  }
 
   finalView.push(grass);
 
