@@ -16,6 +16,9 @@
     "delete": "rimraf app"
   },
   "devDependencies": {
+    "@babel/core": "^7.22.11",
+    "@babel/preset-env": "^7.22.14",
+    "@rollup/plugin-babel": "^6.0.3",
     "copyfiles": "^2.4.1",
     "rimraf": "^5.0.1",
     "rollup": "^3.28.1"
