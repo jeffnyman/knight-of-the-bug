@@ -19,7 +19,7 @@
     "rollup:dev": "rollup --config --watch --environment NODE_ENV:development",
     "copy:html": "copyfiles -u 1 ./src/index.html ./src/favicon.ico app",
     "delete": "rimraf app",
-    "start": "npm run copy:html && (npm run rollup:dev & npm run server:dev)"
+    "start": "npm-run-all copy:html --parallel rollup:dev server:dev"
   },
   "devDependencies": {
     "@babel/core": "^7.22.11",
@@ -31,6 +31,7 @@
     "copyfiles": "^2.4.1",
     "eslint": "^8.48.0",
     "less": "^4.2.0",
+    "npm-run-all": "^4.1.5",
     "postcss-less": "^6.0.0",
     "reload": "^3.2.1",
     "rimraf": "^5.0.1",
