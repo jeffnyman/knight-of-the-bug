@@ -1,13 +1,18 @@
 import babel from "@rollup/plugin-babel";
 import eslint from "@rollup/plugin-eslint";
 
+const mode = process.env.NODE_ENV === "development";
+const sourcemap = mode ? "inline" : false;
+
+console.log(`running in ${mode ? "development" : "production"} mode`);
+
 export default {
   input: "./src/scripts/app.js",
 
   output: {
     file: "./app/dist/app.js",
     format: "es",
-    sourcemap: "inline",
+    sourcemap,
   },
 
   plugins: [
