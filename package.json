@@ -13,6 +13,7 @@
   "scripts": {
     "server:dev": "reload -b -d ./app -w ./app -p 8080",
     "server": "reload -b -d ./app -w ./app -p 8080",
+    "lint:css": "stylelint \"./src/styles/*.less\"",
     "lint:js": "eslint -c .eslintrc.js ./src/scripts",
     "rollup": "rollup --config",
     "rollup:dev": "rollup --config --watch --environment NODE_ENV:development",
@@ -30,9 +31,12 @@
     "copyfiles": "^2.4.1",
     "eslint": "^8.48.0",
     "less": "^4.2.0",
+    "postcss-less": "^6.0.0",
     "reload": "^3.2.1",
     "rimraf": "^5.0.1",
     "rollup": "^3.28.1",
-    "rollup-plugin-postcss": "^4.0.2"
+    "rollup-plugin-postcss": "^4.0.2",
+    "stylelint": "^15.10.3",
+    "stylelint-config-recommended-less": "^1.0.4"
   }
 }
