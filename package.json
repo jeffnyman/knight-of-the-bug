@@ -11,6 +11,8 @@
     "game"
   ],
   "scripts": {
+    "server:dev": "reload -b -d ./app -p 8080 | rollup --bundleConfigAsCjs --environment NODE_ENV:development -c -w",
+    "server": "reload -b -d ./app -p 8080 | rollup --bundleConfigAsCjs -c -w",
     "lint:js": "eslint -c .eslintrc.js ./src/scripts",
     "rollup": "rollup --config --bundleConfigAsCjs",
     "rollup:dev": "rollup --config --bundleConfigAsCjs --environment NODE_ENV:development",
@@ -27,6 +29,7 @@
     "copyfiles": "^2.4.1",
     "eslint": "^8.48.0",
     "less": "^4.2.0",
+    "reload": "^3.2.1",
     "rimraf": "^5.0.1",
     "rollup": "^3.28.1",
     "rollup-plugin-postcss": "^4.0.2"
