@@ -1,4 +1,5 @@
 import babel from "@rollup/plugin-babel";
+import eslint from "@rollup/plugin-eslint";
 
 export default {
   input: "./src/scripts/app.js",
@@ -10,6 +11,10 @@ export default {
   },
 
   plugins: [
+    eslint({
+      fix: true,
+      exclude: ["./node_modules/**", "./src/styles/**"],
+    }),
     babel({
       exclude: "node_modules/**",
       babelHelpers: "bundled",
