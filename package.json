@@ -11,6 +11,7 @@
     "game"
   ],
   "scripts": {
+    "lint:js": "eslint -c .eslintrc.js ./src/scripts",
     "rollup": "rollup --config --bundleConfigAsCjs",
     "rollup:dev": "rollup --config --bundleConfigAsCjs --environment NODE_ENV:development",
     "copy:html": "copyfiles -u 1 ./src/index.html ./src/favicon.ico app",
