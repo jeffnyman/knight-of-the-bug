@@ -20,7 +20,7 @@ export default {
             modules: false,
             useBuiltIns: false,
             targets: {
-              browsers: "last 2 versions",
+              browsers: "defaults",
             },
           },
         ],
