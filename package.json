@@ -11,8 +11,8 @@
     "game"
   ],
   "scripts": {
-    "server:dev": "reload -b -d ./app -p 8080 | rollup --bundleConfigAsCjs --environment NODE_ENV:development -c -w",
-    "server": "reload -b -d ./app -p 8080 | rollup --bundleConfigAsCjs -c -w",
+    "server:dev": "reload -b -d ./app -p 8080 | rollup --environment NODE_ENV:development -c -w",
+    "server": "reload -b -d ./app -p 8080 | rollup -c -w",
     "lint:js": "eslint -c .eslintrc.js ./src/scripts",
     "rollup": "rollup --config --bundleConfigAsCjs",
     "rollup:dev": "rollup --config --bundleConfigAsCjs --environment NODE_ENV:development",
