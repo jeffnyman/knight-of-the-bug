@@ -51,6 +51,7 @@ export default {
       inject: false,
       extract: true,
       sourceMap: devMode ? "inline" : false,
+      minimize: !devMode,
     }),
   ],
 };
