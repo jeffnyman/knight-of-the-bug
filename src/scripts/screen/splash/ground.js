@@ -18,13 +18,43 @@ const KNIGHT = [
   "  /_|_\\  ",
 ];
 
+const FLOWER = [
+  "     ",
+  "     ",
+  "     ",
+  "     ",
+  "     ",
+  " .:. ",
+  "-=o=-",
+  " ':' ",
+  " \\|/ ",
+];
+
 function applyKnightColors(character) {
   let color = "#aae";
   return `<span style="color:${color}">${character}</span>`;
 }
 
+function applyFlowerColors(character) {
+  let color = "#f00";
+
+  if (character == "o") {
+    color = "#ff0";
+  }
+
+  if (character == "\\" || character == "/" || character == "|") {
+    color = "lime";
+  }
+
+  character = character.replace(/</, "&lt;").replace(/>/, "&gt;");
+
+  return `<span style="color:${color}">${character}</span>`;
+}
+
 export function construct() {
   let finalView = [];
+
+  element.innerHTML = GROUND;
 
   // The following code is a way to determine the number of columns needed
   // to make the visual representation of the ground fit nicely within the
@@ -41,18 +71,20 @@ export function construct() {
   // knight and adds `<span>` elements to color each character as specified
   // by the applyKnightColors function. The resulting knight array contains
   // the modified ASCII art that can be rendered, displaying the knight with
-  // the specified color.
+  // the specified color. The same applies to the flower.
   let knight = KNIGHT.join("\n").replace(/\S/g, applyKnightColors).split("\n");
+  let flower = FLOWER.join("\n").replace(/\S/g, applyFlowerColors).split("\n");
 
   for (let i = 0; i < knight.length; i++) {
     let object_columns = columns;
 
     object_columns -= SPACING.length;
     object_columns -= knight.length;
+    object_columns -= flower.length - 4;
 
     let row = `${SPACING}${knight[i]}${new Array(object_columns + 1).join(
       " ",
-    )}${knight[i]}`;
+    )}${flower[i]}`;
 
     finalView.push(row);
   }
