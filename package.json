@@ -17,9 +17,11 @@
     "lint:js": "eslint -c .eslintrc.js ./src/scripts",
     "rollup": "rollup --config",
     "rollup:dev": "rollup --config --watch --environment NODE_ENV:development",
+    "copy:font": "copyfiles -u 1 \"./src/fonts/**/*\" app",
     "copy:html": "copyfiles -u 1 ./src/index.html ./src/favicon.ico app",
     "delete": "rimraf app",
-    "start": "npm-run-all copy:html --parallel rollup:dev server:dev"
+    "build": "npm-run-all copy:* rollup",
+    "start": "npm-run-all copy:* --parallel rollup:dev server:dev"
   },
   "devDependencies": {
     "@babel/core": "^7.22.11",
