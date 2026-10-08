@@ -1,0 +1,52 @@
+@import url("./splash.css");
+@import url("./game.css");
+
+@font-face {
+  font-family: Metrickal;
+  src: url("/fonts/Metrickal-Regular.otf");
+}
+
+:root {
+  --base: 1.2em;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:where(html, body) {
+  overscroll-behavior-y: none;
+}
+
+body {
+  line-height: 1.2;
+  background-color: #000;
+  color: #fff;
+  font-family: Metrickal, monospace;
+}
+
+.app {
+  position: absolute;
+  inset: 0;
+  font-size: 16px;
+
+  & > * {
+    position: absolute;
+  }
+
+  @media (height <= 600px) and (width <= 830px) {
+    font-size: 16px;
+  }
+
+  @media (height <= 530px) and (width <= 750px) {
+    font-size: 14px;
+  }
+
+  @media (height <= 470px) and (width <= 680px) {
+    font-size: 12px;
+  }
+}

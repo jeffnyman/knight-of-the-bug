@@ -1,0 +1,89 @@
+.app {
+  & .panel {
+    color: #aaa;
+    transition: opacity 2000ms;
+
+    & ul {
+      margin: var(--base) 0;
+      padding-left: 4ch;
+    }
+  }
+
+  & .hidden {
+    opacity: 0;
+  }
+
+  & .inactive {
+    opacity: 0.5;
+  }
+
+  & .map {
+    left: 0;
+    top: 0;
+    width: 60vw;
+    height: 60vh;
+    overflow: hidden;
+
+    & canvas {
+      position: relative;
+    }
+  }
+
+  & .combat {
+    right: 0;
+    top: 0;
+    width: 40vw;
+    height: 60vh;
+
+    & p {
+      text-align: center;
+      color: goldenrod;
+    }
+
+    & ul {
+      list-style: none;
+      display: inline-block;
+    }
+
+    & li span {
+      font-size: 24px;
+      vertical-align: middle;
+    }
+
+    & li:not(.inactive) span {
+      font-weight: bold;
+    }
+
+    & canvas,
+    & ul {
+      vertical-align: middle;
+    }
+  }
+
+  & .log {
+    left: 0;
+    bottom: 0;
+    width: 60vw;
+    height: 40vh;
+    overflow: hidden;
+    border: 6px solid #000;
+
+    & p {
+      margin: 0 0 var(--base);
+    }
+  }
+
+  & .status {
+    right: 0;
+    bottom: 0;
+    width: 40vw;
+    height: 40vh;
+    border: 6px solid #000;
+  }
+
+  @media (width <= 1130px) and (height <= 610px) {
+    & .combat li span {
+      font-size: 18px;
+    }
+  }
+}

@@ -1,0 +1,55 @@
+.app {
+  & .title {
+    left: 6ch;
+    top: var(--base);
+    white-space: pre;
+    color: goldenrod;
+  }
+
+  /* Tucked beside the G of BUG, level with the bottom of the letters,
+     where neither the tower nor the blurb ever reaches. */
+  & .byline {
+    left: 54ch;
+    top: calc(16 * var(--base));
+    color: #a88a2e;
+    letter-spacing: 0.1ch;
+  }
+
+  & .ground {
+    bottom: calc(2.5 * var(--base));
+    right: 1ch;
+    white-space: pre;
+
+    & .grass {
+      color: #3c3;
+    }
+  }
+
+  & .blurb {
+    left: 26ch;
+    right: 28ch;
+    bottom: calc(5.5 * var(--base));
+
+    & span {
+      color: #fff;
+    }
+  }
+
+  & .tower {
+    white-space: pre;
+    right: 6ch;
+    bottom: 4.2em;
+
+    & span:not(.transparent) {
+      background-color: #222;
+    }
+  }
+
+  & .tidbit {
+    left: 1ch;
+    bottom: var(--base);
+    right: 1ch;
+    text-align: center;
+    color: #666;
+  }
+}
