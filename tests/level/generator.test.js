@@ -11,6 +11,8 @@ import * as rules from "../../src/rules.js";
 import * as actors from "../../src/util/actors.js";
 import pc from "../../src/being/pc.js";
 import Being from "../../src/being/being.js";
+import { BLOCKS_MOVEMENT } from "../../src/entity.js";
+import { DIRS } from "../../src/conf.js";
 
 beforeEach(() => {
   RNG.setSeed(2017);
@@ -54,6 +56,36 @@ function allRoomsConnected(level) {
   return seen.size == level.rooms.length;
 }
 
+// Whether the player could step onto the cell, opening doors as needed.
+function passable(level, xy) {
+  let cell = level.getCell(xy);
+  if (cell == cells.WALL) {
+    return false;
+  }
+  if (cell instanceof cells.Door) {
+    return true;
+  }
+  return cell.blocks < BLOCKS_MOVEMENT;
+}
+
+// Every cell the player could walk to from the given one.
+function reachableFrom(level, from) {
+  let seen = new Set([from.toString()]);
+  let queue = [from];
+  while (queue.length) {
+    let xy = queue.shift();
+    DIRS.forEach((d) => {
+      let next = xy.plus(d);
+      if (seen.has(next.toString()) || !passable(level, next)) {
+        return;
+      }
+      seen.add(next.toString());
+      queue.push(next);
+    });
+  }
+  return seen;
+}
+
 describe("generate", () => {
   it("builds a connected floor of several rooms within the ellipse", () => {
     let level = generate(1);
@@ -64,6 +96,27 @@ describe("generate", () => {
     let carved = findAll(level, (e) => e != cells.WALL);
     expect(carved.length).toBeGreaterThan(50);
     carved.forEach((xy) => expect(level.isInside(xy)).toBe(true));
+  });
+
+  // The neighbour graph says which rooms were joined, not whether the
+  // corridor survived trimming at the floor's edge. Walk the actual cells
+  // from the arrival point and insist that every room, and above all the
+  // staircase up, can be reached on foot. Many seeds and every regular
+  // floor size are tried because the failure used to be a rare one.
+  it("keeps every room and the staircase up reachable on foot", () => {
+    for (let seed = 1; seed <= 40; seed++) {
+      for (let danger = 1; danger < rules.LAST_LEVEL; danger++) {
+        Object.keys(getLevels()).forEach((key) => delete getLevels()[key]);
+        RNG.setSeed(seed * 1000 + danger);
+        let level = generate(danger);
+
+        let seen = reachableFrom(level, level.start);
+        let stranded = level.rooms.filter((r) => !seen.has(r.center.toString()));
+
+        expect(stranded, `seed ${seed * 1000 + danger}`).toHaveLength(0);
+        expect(seen.has(level.end.toString()), `seed ${seed * 1000 + danger}`).toBe(true);
+      }
+    }
   });
 
   it("puts the start and end in different rooms, with a staircase up at the end", () => {

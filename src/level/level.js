@@ -151,14 +151,24 @@ export default class Level {
     }
   }
 
-  carveCorridor(xy1, xy2) {
+  // The cells a straight corridor between two points would occupy,
+  // without carving anything.
+  corridorCells(xy1, xy2) {
     let diff = xy2.minus(xy1);
     let steps = diff.norm8() + 1;
+    let result = [];
 
     for (let i = 0; i <= steps; i++) {
-      let xy = xy1.lerp(xy2, i / steps).floor();
-      this.setCell(xy, cells.CORRIDOR);
+      result.push(xy1.lerp(xy2, i / steps).floor());
     }
+
+    return result;
+  }
+
+  carveCorridor(xy1, xy2) {
+    this.corridorCells(xy1, xy2).forEach((xy) => {
+      this.setCell(xy, cells.CORRIDOR);
+    });
   }
 
   // Turns corridor cells that touch the room's outline into doors, with
