@@ -20,7 +20,9 @@
     "lint:js": "eslint .",
     "lint:css": "stylelint \"src/**/*.css\"",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "audit": "npm audit --omit=dev",
+    "audit:all": "npm audit"
   },
   "dependencies": {
     "rot-js": "^2.2.1"
