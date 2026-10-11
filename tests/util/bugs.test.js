@@ -9,7 +9,7 @@ import {
   resolveBugs,
 } from "../../src/util/bugs.js";
 
-const ALL = Object.keys(CATALOGUE);
+const ALL = [...CATALOGUE];
 
 afterEach(() => reset());
 

@@ -4,23 +4,35 @@
 // on. The catalogue below is the single list of what exists; the answer
 // key describing each one lives in docs/answer-key.md.
 
-export const CATALOGUE = {
-  "an-article": "the indefinite article is wrong for some words",
-  "board-edge": "the combat cursor can leave the board at two of its edges",
-  "health-overflow": "healing is not capped at maximum health",
-  "loot-lost": "beings carrying a single item drop nothing when crushed",
-  "door-blind": "opening a door does not reveal what is behind it",
-  "layer-label": "the welcome message names the wrong layer",
-  "defense-ignored": "carried defensive items do not reduce damage",
-  "weak-is-strong": "weak drinks are as strong as strong ones",
-};
+// What each one breaks. This stays a comment on purpose: minification
+// strips it, so the descriptions do not ship in the bundle the class
+// plays, while whoever maintains this still has them to hand.
+//
+//   an-article       the indefinite article is wrong for some words
+//   board-edge       the combat cursor can leave the board at two of its edges
+//   health-overflow  healing is not capped at maximum health
+//   loot-lost        beings carrying a single item drop nothing when crushed
+//   door-blind       opening a door does not reveal what is behind it
+//   layer-label      the welcome message names the wrong layer
+//   defense-ignored  carried defensive items do not reduce damage
+//   weak-is-strong   weak drinks are as strong as strong ones
+export const CATALOGUE = [
+  "an-article",
+  "board-edge",
+  "health-overflow",
+  "loot-lost",
+  "door-blind",
+  "layer-label",
+  "defense-ignored",
+  "weak-is-strong",
+];
 
 const PARAMETER = "bugs";
 
 let enabled = new Set();
 
 export function isKnown(id) {
-  return Object.hasOwn(CATALOGUE, id);
+  return CATALOGUE.includes(id);
 }
 
 export function enable(ids) {
@@ -37,7 +49,7 @@ export function reset() {
 }
 
 export function enabledBugs() {
-  return Object.keys(CATALOGUE).filter((id) => enabled.has(id));
+  return CATALOGUE.filter((id) => enabled.has(id));
 }
 
 export function hasBug(id) {
@@ -62,8 +74,8 @@ export function resolveBugs(search) {
     .filter((id) => id.length > 0);
 
   if (ids.includes("all")) {
-    return Object.keys(CATALOGUE);
+    return [...CATALOGUE];
   }
 
-  return Object.keys(CATALOGUE).filter((id) => ids.includes(id));
+  return CATALOGUE.filter((id) => ids.includes(id));
 }
