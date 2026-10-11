@@ -34,7 +34,7 @@ export function buildMiddleRow() {
   let vineDistance = 0;
 
   for (let i = 0; i < WIDTH; i++) {
-    let character = "";
+    let character;
     let separatorChance = (separatorDistance - 0.5) / 3;
     let vineChance = (vineDistance + 1) / 15;
 
