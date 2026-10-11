@@ -120,7 +120,7 @@ npm run build     # production build into dist/
 npm run preview   # serve the production build
 npm test          # run the Vitest suite once
 npm run test:watch
-npm run lint      # ESLint + Stylelint
+npm run lint      # ESLint (JS) + Biome (CSS)
 ```
 
 Plain JavaScript modules, plain CSS, [Vite](https://vite.dev/) for building,
