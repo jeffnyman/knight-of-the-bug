@@ -1,18 +1,14 @@
-# Knight of the Bug
+<h1 align="center">
+<img src="./assets/kotb-title.png" width="466" height="362" alt="Knight of the Bug">
+</h1>
 
-**A Pedagogical Exploration into Bug Hunting**
+<p align="center">
+<strong>A Pedagogical Exploration into Bug Hunting</strong>
+</p>
 
 A small browser roguelike used as a teaching vehicle for bug finding and
 exploratory testing in a JavaScript ecosystem. It is a game you can play,
 a codebase you can read, and a system you can test.
-
-The game is based on [Sleeping Beauty](https://github.com/ondras/sleeping-beauty),
-a 7DRL game by Ondřej Žára, used and reframed with his written permission
-(see `assets/permission.png`). The font is
-[Metrickal](https://github.com/davelab6/metrickal-typeface) by Robey Pointer.
-This version is
-released under the MIT License; the original's ISC terms and the other
-third-party notices are in [LICENSE](LICENSE).
 
 ## The story
 
@@ -23,10 +19,6 @@ errors, null pointers and race conditions further up, dead code, regressions,
 infinite loops and stack overflows near the top. Guarding the feature is the
 Bug itself, the one that put it to sleep. You are the tester sent to crush
 it and wake the feature.
-
-Every renamed thing, from the original's princess to the bugs and tools here,
-is listed in [docs/theme.md](docs/theme.md), along with the one addition the
-original did not have: the Bug as a boss.
 
 ## How to play
 
@@ -42,7 +34,13 @@ Start the game, press Enter on the title screen, and you are on layer 1.
 
 Interacting with a being offers a choice: poke it, talk to it, or debug it.
 Debugging starts a **Debug Session**, a puzzle on a six by six board of
-symbols. Move the cursor onto a group of two or more matching symbols and
+symbols.
+
+<p align="center">
+<img src="./assets/kotb-debug-a-typo.png" width="654" height="354" alt="Debug a Typo">
+</p>
+
+Move the cursor onto a group of two or more matching symbols and
 press Enter. The group vanishes, the symbols above fall into the gap, and the
 group's kind decides what happens: `+` is you patching the bug, `x` is the
 bug striking you, `*` is you refactoring (which costs focus) and `~` is the
@@ -127,3 +125,17 @@ Plain JavaScript modules, plain CSS, [Vite](https://vite.dev/) for building,
 [Vitest](https://vitest.dev/) for tests, and
 [rot-js](https://ondras.github.io/rot.js/hp/) for the map display, field of
 view, noise and random numbers.
+
+# Credits
+
+The game is based on [Sleeping Beauty](https://github.com/ondras/sleeping-beauty),
+a 7DRL game by Ondřej Žára, used and reframed with his written permission
+(see `assets/permission.png`). The font is
+[Metrickal](https://github.com/davelab6/metrickal-typeface) by Robey Pointer.
+This version is
+released under the MIT License; the original's ISC terms and the other
+third-party notices are in [LICENSE](LICENSE).
+
+Every renamed thing, from the original's princess to the bugs and tools here,
+is listed in [docs/theme.md](docs/theme.md), along with the one addition the
+original did not have: the Bug as a boss.
